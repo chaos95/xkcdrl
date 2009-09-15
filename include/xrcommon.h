@@ -3,11 +3,18 @@
 #define __XR_COMMON_H__
 
 /**
- * Should be included by most files, to include all commonly used headers and other crap
- *
+ * Should be included by most files, provides utilities and other crap
  */
- 
- 
- 
- 
- #endif
+
+
+#include <assert.h>
+
+// convenience memory management funcs
+#define new(obj) ((obj *)malloc(sizeof(obj)));
+#define delete(x) free(x); x = null;
+
+
+typedef unsigned char byte;
+
+
+#endif
