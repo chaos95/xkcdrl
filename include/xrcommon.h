@@ -6,12 +6,13 @@
  * Should be included by most files, provides utilities and other crap
  */
 
-
+#include <stdlib.h>
 #include <assert.h>
 
+
 // convenience memory management funcs
-#define new(obj) ((obj *)malloc(sizeof(obj)));
-#define delete(x) free(x); x = null;
+#define new(obj) ((obj *) malloc(sizeof(obj)));
+#define delete(x) free(x); x = NULL;
 
 
 typedef unsigned char byte;
