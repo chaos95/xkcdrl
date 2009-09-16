@@ -9,10 +9,10 @@
 #include <stdlib.h>
 #include <assert.h>
 
+/* convenience memory management funcs */
 
-// convenience memory management funcs
 #define new(obj) ((obj *) malloc(sizeof(obj)));
-#define delete(x) free(x); x = NULL;
+#define delete(x) free(x);  x = NULL;
 
 
 typedef unsigned char byte;
