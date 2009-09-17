@@ -8,18 +8,25 @@
 
 typedef struct xrwindow_struct {
 	char * title;
-	unsigned int width;
-	unsigned int height;
+	GLuint width;
+	GLuint height;
 } xrwindow;
 
 
-bool          window_created;
-xrwindow    * main_window;
+bool       window_created;
+xrwindow * main_window;
 
-void window_create(char * title, unsigned int width, unsigned int height);
+
+GLuint num_tiles_x;
+GLuint num_tiles_y;
+
+
+
+void window_create(char * title, GLuint width, GLuint height);
 void window_close();
 
-//SDL_Surface * load_image(char * filename);
+void window_enter2d();
+
 
 
 
