@@ -5,20 +5,21 @@
 
 base_options = {
 	"include_dirs": ["include"],
+	"libraries": ["SDL"],
 	"source_dir": "src",
 	"build_dir": "out",
-	"compile_flags": "-Wall -ansi -pedantic",
+	"compile_flags": "-Wall -ansi -pedantic -Wextra",
 	"output_executable": "xkcdrl"
 }
 
 
 debug_options =  {
-	"compile_flags": "-Wall -ansi -pedantic -DDEBUG"
+	"compile_flags": "-Wall -pedantic -std=c99 -DDEBUG"
 }
 
 
 release_options = {
-	"compile_flags": "-Wall -ansi -pedantic -O2 -UDEBUG",
+	"compile_flags": "-Wall -pedantic -std=c99 -O2 -UDEBUG",
 	"output_executable": "xkcdrl_release"
 }
 
@@ -27,6 +28,8 @@ release_options = {
 
 
 ### === DO NOT EDIT BELOW === ###
+
+Decider("MD5-timestamp")
 
 cmd_options = Variables()
 cmd_options.Add(BoolVariable("release", "Set to true or 1 to build for release", 0))
@@ -44,15 +47,12 @@ else:
 	
 
 VariantDir(options.get("build_dir", "out"), options.get("source_dir", "src"), duplicate=0)
-#VariantDir("out", "src")
 
 env.Append(
+	LIBS = options.get("libraries", []),
 	CPPPATH = options.get("include_dirs", []),
 	CCFLAGS = options.get("compile_flags", "-Wall")
 )
-
-
-
 
 env.Program(options.get("output_executable", "out"), Glob(options.get("build_dir", "out") + "/*.c"))
 
