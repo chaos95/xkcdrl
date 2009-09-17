@@ -5,13 +5,12 @@
 
 bool          window_created = false;
 xrwindow    * main_window    = NULL;
-SDL_Surface * screen         = NULL;
 
 
 void window_create(char * title, unsigned int width, unsigned int height) {
 
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-		error("Failed to initialize SDL");
+	if (glfwInit() != GL_TRUE) {
+		error("Failed to initialize GLFW");
 		return;	
 	}
 	
@@ -21,21 +20,17 @@ void window_create(char * title, unsigned int width, unsigned int height) {
 	main_window->width = width;
 	main_window->height = height;
 	
-	screen = SDL_SetVideoMode(width, height, 8, SDL_SWSURFACE);
-	
-	if (screen == NULL) {
-		error("Failed to set SDL video moe");
+	if (glfwOpenWindow(width, height, 5, 6, 5, 0, 0, 0, GLFW_WINDOW) != GL_TRUE) {
+		error("Failed to open GLFW window");
 		return;
 	}
 	
-	SDL_WM_SetCaption(title, title);
+	glfwSetWindowTitle(title);
 
 }
-
 
 void window_close() {
-
-
-
+	delete(main_window);
 }
+
 

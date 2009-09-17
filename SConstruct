@@ -5,7 +5,7 @@
 
 base_options = {
 	"include_dirs": ["include"],
-	"libraries": ["SDL"],
+	"libraries": ["GLU", "GL", "glfw", "Xrandr", "pthread"],
 	"source_dir": "src",
 	"build_dir": "out",
 	"compile_flags": "-Wall -ansi -pedantic -Wextra",
@@ -31,12 +31,16 @@ release_options = {
 
 Decider("MD5-timestamp")
 
-cmd_options = Variables()
-cmd_options.Add(BoolVariable("release", "Set to true or 1 to build for release", 0))
+AddOption('--release', type=None)
 
-env = Environment(variables = cmd_options)
 
-debug_on = not int(env["release"])
+
+env = Environment()
+
+rel = GetOption("release")
+if rel == None:
+	rel == 1
+debug_on = not rel
 
 options = base_options
 

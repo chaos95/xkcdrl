@@ -3,7 +3,7 @@
 #define __XR_GRAPHICS_H__
 
 #include "xrcommon.h"
-#include <SDL/SDL.h>
+#include <GL/glfw.h>
 
 
 typedef struct xrwindow_struct {
@@ -15,12 +15,11 @@ typedef struct xrwindow_struct {
 
 bool          window_created;
 xrwindow    * main_window;
-SDL_Surface * screen;
-
-
 
 void window_create(char * title, unsigned int width, unsigned int height);
 void window_close();
+
+//SDL_Surface * load_image(char * filename);
 
 
 
