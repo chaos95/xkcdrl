@@ -1,2 +1,2 @@
 
-scons -Q -j 2 $1
+python scons.py -Q -j 2 $1
