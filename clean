@@ -1,1 +1,1 @@
-scons -c -Q
+python scons.py -c -Q
