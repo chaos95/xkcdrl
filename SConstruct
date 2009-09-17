@@ -50,7 +50,7 @@ else:
 	options.update(release_options)
 	
 
-VariantDir(options.get("build_dir", "out"), options.get("source_dir", "src"), duplicate=0)
+BuildDir(options.get("build_dir", "out"), options.get("source_dir", "src"), duplicate=0)
 
 env.Append(
 	LIBS = options.get("libraries", []),
