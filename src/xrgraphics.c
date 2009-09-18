@@ -38,10 +38,32 @@ void window_close() {
 }
 
 
-void window_enter2d() {
+void window_setup_drawing(char * tilemap_image) {
+	
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho (0, num_tiles_x, num_tiles_y, 0, 0, 1);
+	
 	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);
+	
+	glBindTexture (GL_TEXTURE_2D, GFX_TILESET_ID);
+	
+	glfwLoadTexture2D(tilemap_image, GLFW_ORIGIN_UL_BIT);
+	
+    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    
+    //glTexEnvf (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+
 }
+
+
+
+
+
+
+
+
+
 

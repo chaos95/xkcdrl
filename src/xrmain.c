@@ -11,7 +11,7 @@ int main(int argc, char * argv[]) {
 
 	window_create("XKCD Roguelike!", 640, 480);
 	
-	window_enter2d();
+	window_setup_drawing("test.tga");
 	
 	while( running )
 	{
@@ -20,11 +20,17 @@ int main(int argc, char * argv[]) {
 
 
 		glBegin(GL_QUADS);
-			glColor3f(1.0f, 1.0f, 1.0f);
-			glVertex2i(2,10);
-			glVertex2i(2,15);
-			glVertex2i(9,15);
-			glVertex2i(9,10);
+			glTexCoord2i (0, 0);
+			glVertex2i   (0, 0);
+			
+			glTexCoord2i (1, 0);
+			glVertex2i   (10,  0);
+			
+			glTexCoord2i (1, 1);
+			glVertex2i   (10, 10);
+			
+			glTexCoord2i (0, 1);
+			glVertex2i   (0, 10);
 		glEnd();
 
 		glfwSwapBuffers();
